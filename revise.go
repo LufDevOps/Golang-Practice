@@ -1,31 +1,52 @@
 package main
-import "fmt"
+
+import (
+	"fmt"
+	 "golang.org/x/exp/slices"
+)
+
 
 func main(){
-	var a = "inital"
-	fmt.Println(a)
+	var s []string
+	fmt.Println("uninit:", s, s == nil, len(s) == 0)
 
-	var b, c int = 1, 2
-	fmt.Println(b,c)
+	s = make([]string, 3)
+	fmt.Println("emp:", s, "len:", len(s), "cap:", cap(s))
 
-	var d,e int = 3,4
-	fmt.Println(e, d)
+	s[0] = "30"
+	s[1] = "10"
+	s[2] = "2002"
 
-	var g,h int = 9,10
-	fmt.Println(g,h)
+	s = append(s, "18")
+	s = append(s, "11","2003")
 
-	var d1 = true;
-	fmt.Println(d1)
-	var d2 = false;
-	fmt.Println(d2)
+	fmt.Println("love:", s)
 
-	var inital int
-	fmt.Println(inital)
+	l := s[3:6]
+	fmt.Println("sl1:", l)
 
-	var o int
-	fmt.Println(o)
+	l = s[:3]
+	fmt.Println("sl2:", l)
 
-	f := "water melon"
-	fmt.Println(f)
-	
+	l = s[2:]
+	fmt.Println("sl3", l)
+
+	t := []string{"g", "h", "i"}
+    fmt.Println("dcl:", t)
+
+	t2 := []string{"g","h","i"}
+	if slices.Equal(t, t2) {
+		fmt.Println("t == t2")
+		
+	}
+	twoD := make([][]int, 3)
+    for i := 0; i < 3; i++ {
+        innerLen := i + 1
+        twoD[i] = make([]int, innerLen)
+        for j := 0; j < innerLen; j++ {
+            twoD[i][j] = i + j
+        }
+    }
+    fmt.Println("2d: ", twoD)
 }
+
